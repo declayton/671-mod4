@@ -1,4 +1,6 @@
 """
+Name: Deanna Clayton
+Date: 2/6/23
 
 Creates and sends a task message to the queue each execution.
 This process runs and finishes. 
@@ -48,3 +50,4 @@ channel.basic_publish(
 print(f" [x] Sent {message}")
 # close the connection to the server
 connection.close()
+

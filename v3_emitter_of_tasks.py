@@ -10,6 +10,8 @@
 import pika
 import sys
 import webbrowser
+import csv
+import time
 
 def offer_rabbitmq_admin_site():
     """Offer to open the RabbitMQ Admin website"""
@@ -52,17 +54,39 @@ def send_message(host: str, queue_name: str, message: str):
         # close the connection to the server
         conn.close()
 
+# read from a file to get some data
+input_file = open("tasks.csv", "r")
+
+# create a csv reader for our comma delimited data
+reader = csv.reader(input_file, delimiter=",")
+
 # Standard Python idiom to indicate main program entry point
 # This allows us to import this module and use its functions
 # without executing the code below.
 # If this is the program being run, then execute the code below
 if __name__ == "__main__":  
     # ask the user if they'd like to open the RabbitMQ Admin site
-    offer_rabbitmq_admin_site()
-    # get the message from the command line
-    # if no arguments are provided, use the default message
-    # use the join method to convert the list of arguments into a string
-    # join by the space character inside the quotes
-    message = " ".join(sys.argv[1:]) or "Second task....."
-    # send the message to the queue
-    send_message("localhost","task_queue2",message)
+    show_offer = False
+    if show_offer == True:
+        offer_rabbitmq_admin_site()
+    
+    for row in reader:
+        # read a row from the file
+        Task = row
+        # get the message from the command line
+        # if no arguments are provided, use the default message
+        # use the join method to convert the list of arguments into a string
+        # join by the space character inside the quotes
+        message = " ".join(sys.argv[1:]) or f"{Task}"
+        # send the message to the queue
+        send_message("localhost","task_queue3",message)
+        # tell the user the message was sent
+        print(f" [x] Sent {message}")
+        # sleep for a second
+        time.sleep(3)
+
+
+    
+
+
+

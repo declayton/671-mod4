@@ -1,3 +1,9 @@
+Deanna Clayton
+
+For my version, I had an producer file read from a csv file and emit the lines as a series of messages to the queue. I then had a consumer file get the messages from the queue and write them to another file.
+
+For this project, I had one producer and two consumer files opened to emit and receive the messages.
+
 # streaming-04-multiple-consumers
 
 > Use RabbitMQ to distribute tasks to multiple workers
@@ -58,3 +64,12 @@ Which worker gets which tasks?
 ## Screenshot
 
 See a running example with at least 3 concurrent process windows here:
+
+Screenshot of Version 1
+![Screenshot](Screenshot_Version_1.png)
+
+Screenshot of Version 2
+![Screenshot](Screenshot_Version_2.png)
+
+Screenshot of Version 3
+![Screenshot](Screenshot_Version_3.png)
