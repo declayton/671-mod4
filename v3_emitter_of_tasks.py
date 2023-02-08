@@ -3,7 +3,7 @@
     Make tasks harder/longer-running by adding dots at the end of the message.
 
     Author: Deanna Clayton
-    Date: 2/6/2023
+    Date: February 6, 2023
 
 """
 
